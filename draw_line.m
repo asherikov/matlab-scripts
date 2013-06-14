@@ -1,11 +1,11 @@
 function draw_line(coef, color, width)
-    xlim = get (gca (), "xlim");
-    ylim = get (gca (), "ylim");
+    xlim = get (gca (), 'xlim');
+    ylim = get (gca (), 'ylim');
 
 
     p = [];
 
-    if (coef(2) != 0)
+    if (coef(2) ~= 0)
         A = [coef(1:2); 1 0];
         b1 = [coef(3); xlim(1)];
         b2 = [coef(3); xlim(2)];
@@ -23,7 +23,7 @@ function draw_line(coef, color, width)
         end
     end
 
-    if (coef(1) != 0)
+    if (coef(1) ~= 0)
         A = [coef(1:2); 0 1];
         b1 = [coef(3); ylim(1)];
         b2 = [coef(3); ylim(2)];
