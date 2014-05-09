@@ -2,13 +2,16 @@
 % A replacement for blkdiag(), which is quite slow for some reason.
 %
 function [M] = makediag(varargin)
-    M = [];
-    for i=1:nargin;
-        [r1, c1] = size(M);
-        [r2, c2] = size(varargin{i});
+    S = cellfun (@size, varargin, 'UniformOutput', false);
+    S = [   0, 0; ...
+            cumsum( cat(1, S{:}), 1 )   ];
 
-        M = [M, zeros(r1,c2);
-            zeros(r2,c1), varargin{i}];
+    M = zeros(S(end,:));
+    for i=1:nargin;
+        indx = S(i, 1) + 1 : S(i+1, 1);
+        indy = S(i, 2) + 1 : S(i+1, 2);
+
+        M(indx, indy) = varargin{i};
     end
 end
 

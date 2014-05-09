@@ -1,15 +1,12 @@
 function [out] = makediag_n(M, n)
-    if n < 1
+    if ((n < 1) || isempty(M))
         out = [];
     else
-        [r, c] = size(M);
-        out = M;
+        S = size(M);
+        out = zeros(S*n);
 
-        for i=2:n;
-            [ro, co] = size(out);
-
-            out = [out, zeros(ro,c);
-                   zeros(r,co), M];
+        for i = 1:n;
+            out(S(1)*(i-1)+1:S(1)*i,   S(2)*(i-1)+1:S(2)*i) = M;
         end
     end
 end
