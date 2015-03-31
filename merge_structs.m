@@ -8,7 +8,7 @@ function out_struct = merge_structs (in_struct1, in_struct2)
     concat_cell = [ fieldnames(in_struct1)' fieldnames(in_struct2)';
                     struct2cell(in_struct1)' struct2cell(in_struct2)'];
 
-    [_junk, rows] = unique(concat_cell(1,:), 'last');
+    [~, rows] = unique(concat_cell(1,:), 'last');
 
     filtered_cell = concat_cell(:, rows);
 
