@@ -1,4 +1,4 @@
-function draw_arrow(p1, p2, hW, hL, lC, hC, head_case, ls, lw)
+function draw_arrow(p1, p2, hW, hL, lC, hC, eC, head_case, ls, lw)
 %
 % Draws an arrow
 %
@@ -10,6 +10,7 @@ function draw_arrow(p1, p2, hW, hL, lC, hC, head_case, ls, lw)
 % hL [1x1]  - head length
 % lC [1x3]  - line color (RGB)
 % hC [1x3]  - head color (RGB)
+% eC [1x3]  - head edge color (RGB)
 % head_case - if head_case = 1 plot arrow sides only
 %             if head_case ~= 1 fill the arrow with hC
 % ls        - line style (e.g., '--'
@@ -21,25 +22,27 @@ function draw_arrow(p1, p2, hW, hL, lC, hC, head_case, ls, lw)
 %
 
 % edge color
-eC = [0 0 0];
 
 p1 = p1(:);
 p2 = p2(:);
 
 white = [1 1 1];
 
-if nargin < 9
+if nargin < 10
     lw = 1;
-    if nargin < 8
+    if nargin < 9
         ls = '-';
-        if nargin < 7
+        if nargin < 8
             head_case = 0;
-            if nargin < 5
-                lC = white*0.95;
-                hC = white*0.95;
-                if nargin < 3
-                    hW = 0.1;
-                    hL = 0.2;
+            if nargin < 7
+                eC = [0 0 0];
+                if nargin < 5
+                    lC = white*0.95;
+                    hC = white*0.95;
+                    if nargin < 3
+                        hW = 0.1;
+                        hL = 0.2;
+                    end
                 end
             end
         end

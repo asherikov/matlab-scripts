@@ -10,5 +10,9 @@ A repository for simple Matlab/Octave scripts.
 * makediag.m,       makediag_n.m replace blkdiag() function, which is slow in Octave.
 * print_plot.m      prints plot with specified parameters.
 * merge_structs.m   merges two structures with conflicting fields.
-* norm_cols.m       normalize columns
-* norm_rows.m       normalize rows
+* normalize_cols.m  normalize columns
+* normalize_rows.m  normalize rows
+* polycubic.m       generates cubic polynomial with given boundary conditions,
+                    computes positions, velocities, and accelerations at given
+                    time moments
+
